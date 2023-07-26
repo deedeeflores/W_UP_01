@@ -1,7 +1,7 @@
 ---
 title: "W_UP_01"
 author: "Diana Flores"
-date: "fall 2020"
+date: "Summer 2023 "
 output: html_document
 ---
 
@@ -21,6 +21,9 @@ mydata <- read.csv(file="pushups.csv")
 
 <!--In this section you explain what you are trying to show. Where did the data come from? What is the research or other question you are trying to answer?!-->
 
+We are trying to find the average number of push up between skill players and line players. Is there a statistical difference in the average number of push ups between both positions.
+
+
 Create an Rstudio project in your shared space on rstudio.cloud.  Using the dataset called pushups from the tigerstats package in R; answer the question posed by this null and alternate hypothesis in an html markdown document.
 
 $H_0$: There is no difference between the average number of pushups of line vs skill players
@@ -28,6 +31,9 @@ $H_0$: There is no difference between the average number of pushups of line vs s
 $H_A$: The average number of pushups done by line players is statistically different than that of skill players.
 
 # Methods
+
+I will be using the Num~Cat numerical for the number average of push and categorical for the different positions.The method i will use will be a box plot we will also be a numerical summery for a numerical descriptive results . Lastly we will include a t-test.
+
 
 <!--Decide on your methods: use "variable analysis" or other appropriate descriptors. Make sure to choose at least one graphical method and at least one numerical method.!-->
 
@@ -39,18 +45,38 @@ $H_A$: The average number of pushups done by line players is statistically diffe
 
 ### Graphical Descriptive Results
 
-<!--Graphical results here. Make sure to show your code. Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too. Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
+```{r}
+boxplot(pushups~position,data=mydata)
+```
+
+The box plot shows that skills payers on average do about 60 pushups and the line positions does less than 20 on average.This study was done in a two minute time frame.
 
 ### Numerical Descriptive Results
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
+```{r}
+favstats(pushups~position,data=mydata)
+```
+
+We have found the mean to be 17 for line players and 50 f0r skill players. The difference in means is 33 push-ups.
+
 ## Inferential Results
 
 <!--State hypothesis clearly. Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc. Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
+
+```{r}
+t.test(pushups~position,data=mydata)
+```
+
+
+The t test show that there is a difference in average push-ups for line players and skill players the difference is 33 push ups more than line players. 95 percent of the time the skills players do between 20-45 more push ups in two mins than a line player.The p value .000009421 this is so small number which leads us to  we reject the null hypothesis 
 
 
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here. If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason. Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
 
+
+
+The original question what is who does more push ups on average skill players or line players. Is there a statistical difference? We have found there is a difference on push ups done per line skills players. The difference is 95 percent of the players do 20 to 45 push ups  more than a liner player.The p vlaue leads us to reject the null hypothesis.We have found their is a statistical difference. 
